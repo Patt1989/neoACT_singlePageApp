@@ -69,7 +69,9 @@
   <ItemGroup>
     <Content Include="Web.config" />
     <Content Include="wwwroot\app.js" />
+    <Content Include="wwwroot\homePage.js" />
     <Content Include="wwwroot\index.html" />
+    <Content Include="wwwroot\main.js" />
     <Content Include="wwwroot\styles.css" />
   </ItemGroup>
   <ItemGroup>
