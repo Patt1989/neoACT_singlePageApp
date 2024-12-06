@@ -73,3 +73,10 @@ Z:\Documents\NeoACT\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.csproj.CoreCompile
 Z:\Documents\NeoACT\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.csproj.Up2Date
 Z:\Documents\NeoACT\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.dll
 Z:\Documents\NeoACT\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.pdb
+D:\Documenten\neoACT_singlePageApp\bin\NeoACT_SPA.dll.config
+D:\Documenten\neoACT_singlePageApp\bin\NeoACT_SPA.dll
+D:\Documenten\neoACT_singlePageApp\bin\NeoACT_SPA.pdb
+D:\Documenten\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.csprojAssemblyReference.cache
+D:\Documenten\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.csproj.CopyComplete
+D:\Documenten\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.dll
+D:\Documenten\neoACT_singlePageApp\obj\Debug\NeoACT_SPA.pdb
