@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Get the content container
+    //Get the content container
     const content = document.getElementById("content");
 
-    // Get all links
+    //Get all navbar tab containers
     const homeLink = document.getElementById("home-link");
     const aboutLink = document.getElementById("about-link");
     const contactLink = document.getElementById("contact-link");
 
-    // Define content for each page
+    //Content of each page
     const homeContent = `
         <h1>Welcome to NeoACT Calculator</h1>
         <h2>Disclaimer</h2>
@@ -55,33 +55,30 @@ document.addEventListener("DOMContentLoaded", function () {
         <div id="result-container"></div>
     `;
 
-    // Function to update content dynamically
+    //Update content
     function updateContent(contentHTML) {
         content.innerHTML = contentHTML;
 
-        // If the content includes the "Agree" button, set up the event listener
+        // --- Homepage
         const btnAgree = document.getElementById("button-agree");
         const btnDisagree = document.getElementById("button-disagree");
         const checkbox = document.getElementById("do-not-show-again");
-        if (btnAgree) {
+        
+        if (btnAgree && btnDisagree) {
             btnAgree.addEventListener("click", function (e) {
                 e.preventDefault();
                 checkbox.checked
-                    ? localStorage.setItem("agreed", "true")
-                    : sessionStorage.setItem("agreed", "true");
-                updateContent(calculatorContent); // Change the content to the "about" page
+                    ? localStorage.setItem("agreed", "true") //if checked, consent is saved in localStorage
+                    : sessionStorage.setItem("agreed", "true"); //if unchecked, consent is only saved in sessionStorage
+                updateContent(calculatorContent); 
             });
-        }
 
-        // "Do not agree" button click event to redirect to a website
-        if (btnDisagree) {
             btnDisagree.addEventListener("click", function () {
-                // Redirect to the specified website
-                window.location.href = "https://www.google.com"; // Change the URL to your desired website
+                window.location.href = "https://www.google.com";
             });
         }
 
-        // Clear agreement button
+        // --- Contactpage
         const btnClearAgreement = document.getElementById("button-clear-agreement");
         if (btnClearAgreement) {
             btnClearAgreement.addEventListener("click", function () {
@@ -91,9 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-        // Event listener for the "Calculate" button
+        // --- Calculatorpage
         const btnCalculate = document.getElementById("button-calculate");
         const errorContainer = document.getElementById("error-container");
+        
         if (btnCalculate) {
             btnCalculate.addEventListener("click", function () {
                 const input1 = document.getElementById("input1").value;
@@ -105,10 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
           
-                // Example calculation: Add the three input values
-                const result = parseFloat(input1) + parseFloat(input2) + parseFloat(input3);
+                const result = parseFloat(input1) + parseFloat(input2) + parseFloat(input3); //calculation
         
-                // Display the result in the result container
                 const resultContainer = document.getElementById("result-container");
                 resultContainer.innerHTML = `<h2>Result: ${result}</h2>`;
                 errorContainer.innerHTML = ``;
@@ -116,30 +112,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Event listeners for each link
+    //Event listeners for each navbar tab
+
+    // --- Homepage
     homeLink.addEventListener("click", function (e) {
         e.preventDefault();
         if (
-            localStorage.getItem("agreed") === "true" ||
+            localStorage.getItem("agreed") === "true" || 
             sessionStorage.getItem("agreed") === "true"
         ) {
-            updateContent(calculatorContent); // Automatically go to calculator content
+            updateContent(calculatorContent);
         } else {
-            // If not, show the home content (which includes the disclaimer and Agree button)
             updateContent(homeContent);
         }
     });
 
+    // --- Aboutpage
     aboutLink.addEventListener("click", function (e) {
         e.preventDefault();
         updateContent(aboutContent);
     });
 
+    // --- Contactpage
     contactLink.addEventListener("click", function (e) {
         e.preventDefault();
         updateContent(contactContent);
     });
 
+    //Initial page
     if (
         localStorage.getItem("agreed") === "true" ||
         sessionStorage.getItem("agreed") === "true"
@@ -149,59 +149,3 @@ document.addEventListener("DOMContentLoaded", function () {
         updateContent(homeContent);
     }
 });
-
-//document.addEventListener("DOMContentLoaded", function () {
-//    // Function to update the content based on the route
-//    function updateContent(route, data) {
-//        const content = document.getElementById("content");
-
-//        if (data && data[route]) {
-//            content.innerHTML = `<h1>${data[route].title}</h1><p>${data[route].content}</p>`;
-//        } else {
-//            content.innerHTML = "<h1>Page Not Found</h1>";
-//        }
-//    }
-
-//    // Fetch data from the JSON file
-//    function fetchData() {
-//        return fetch('data.json')
-//            .then(response => response.json())
-//            .catch(error => {
-//                console.error('Error loading data.json:', error);
-//                return {}; // Return empty object in case of error
-//            });
-//    }
-
-//    // Event listeners for navigation links
-//    function setupNavigation(data) {
-//        document.getElementById("home-link").addEventListener("click", function () {
-//            updateContent("home", data);
-//            history.pushState(null, null, "#home");
-//        });
-
-//        document.getElementById("about-link").addEventListener("click", function () {
-//            updateContent("about", data);
-//            history.pushState(null, null, "#about");
-//        });
-
-//        document.getElementById("contact-link").addEventListener("click", function () {
-//            updateContent("contact", data);
-//            history.pushState(null, null, "#contact");
-//        });
-//    }
-
-//    // Handle browser back/forward button events
-//    window.addEventListener("popstate", function () {
-//        const route = location.hash.slice(1); // Get the route from the URL
-//        fetchData().then(data => {
-//            updateContent(route, data);
-//        });
-//    });
-
-//    // Initial content load based on current URL hash
-//    const initialRoute = location.hash.slice(1) || "home"; // Default to home if no route
-//    fetchData().then(data => {
-//        updateContent(initialRoute, data);
-//        setupNavigation(data); // Set up navigation listeners
-//    });
-//});
