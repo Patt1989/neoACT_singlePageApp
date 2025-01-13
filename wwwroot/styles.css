@@ -3,6 +3,10 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
 }
 
 /* Header */
@@ -10,6 +14,7 @@ header {
     background-color: #333;
     color: white;
     padding: 10px;
+    width: 100%;
 }
 
 header nav ul {
@@ -38,11 +43,53 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 60%;
 }
 
-/* Text */
-h1 {
-    color: #333;
+.title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.disclaimer-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.title-disclaimer {
+  font-weight: 300;
+  margin: 0px;
+  margin-bottom: 20px;
+}
+
+.text-disclaimer {
+  font-weight: 300;
+  margin: 0;
+}
+
+.text-about {
+  width: 100%;
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.text-about-title {
+  width: 100%;
+  font-weight: 600;
+  margin: 0;
+}
+
+.text-contact {
+  font-weight: 300;
+  margin-bottom: 50px;
+  margin: 0;
 }
 
 /* Buttons */
