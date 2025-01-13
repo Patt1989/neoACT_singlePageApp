@@ -11,30 +11,53 @@ body {
 
 /* Header */
 header {
-    background-color: #333;
+    background-color: rgb(79, 4, 51);
     color: white;
     padding: 10px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
 }
 
-header nav ul {
+  header img {
+      height: 80px;
+  }
+  
+  header nav {
+    position: absolute;
+    left: 50%; /* Position it in the middle horizontally */
+    transform: translateX(-50%); /* Adjust its position by half of its own width */
+    margin: 0;
+    color: white;
+  }
+
+  header nav ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
 }
 
-header nav ul li a {
+  header nav ul li a {
+    background-color: rgb(79,4,51);
     color: white;
     text-decoration: none;
-    padding: 5px;
-    border: 1px solid #333;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding-top: 40px;
+    padding-bottom: 39px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
 }
 
-header nav ul li a:hover{
-    border: 1px solid #ccc;
+  header nav ul li a:hover{
+    background-color: white;
+    color: rgb(79,4,51);
+    height: 100px;
 }
 
 /* Main */
@@ -47,6 +70,7 @@ main {
 }
 
 .title {
+  color: rgb(79, 4, 51);
   text-align: center;
   margin-top: 20px;
   margin-bottom: 40px;
@@ -63,7 +87,7 @@ main {
 }
 
 .title-disclaimer {
-  font-weight: 300;
+  color: black;
   margin: 0px;
   margin-bottom: 20px;
 }
@@ -81,6 +105,7 @@ main {
 }
 
 .text-about-title {
+  color: rgb(79, 4, 51);
   width: 100%;
   font-weight: 600;
   margin: 0;
@@ -90,6 +115,7 @@ main {
   font-weight: 300;
   margin-bottom: 50px;
   margin: 0;
+  margin-bottom: 20px;
 }
 
 /* Buttons */
@@ -100,12 +126,21 @@ main {
     margin: 10px; 
   }
 
-button {
-    padding: 10px 20px;    
-    font-size: 16px;       
-    cursor: pointer;  
-    width: fit-content;    
-  }
+.primary-button {
+    background-color: rgb(79,4,51);
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+    .primary-button:hover {
+        background-color: white;
+        color: rgb(79,4,51);
+        border: 1px solid rgb(79, 4, 51);
+    }
 
 /* Checkbox */
 input[type="checkbox"] {
@@ -117,12 +152,16 @@ input[type="checkbox"]:checked {
     border-color: #000;  
   }
 
+label {
+  font-size: 20px;
+}
+
 /* Calculator */
 .input-container {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 20px;
+    margin: 0px;
     align-items: center;
   }
   
@@ -166,3 +205,27 @@ input[type="number"]::-ms-clear {
     justify-content: center;
     color: red;
   }
+
+.result-container {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  padding: 20px;
+}
+
+.visible {
+  border: 1px solid black;
+}
+
+.text-result-title {
+  margin: 0px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.text-result {
+  margin: 0px;
+  font-weight: 100;
+}

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nomogramContent = `
         <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥N2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
         <div class="disclaimer-container">
-            <h1 class="title-disclaimer">Disclaimer</h1>
+            <h2 class="title-disclaimer">Disclaimer</h2>
             <h3 class="text-disclaimer">
             The nomogram is designed to predict high nodal burden in patients with ER+ HER2neu/ERBB2-negative breast cancer and 
             1-2 macrometastases in sentinel lymph node and serves as a decision aid and should not be used as a stand-alone tool 
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
             </h3>
         </div>
         <div class="button-container">
-            <button id="button-agree">Agree</button>
-            <button id="button-disagree">Do not agree</button>
+            <button class="primary-button" id="button-agree">Agree</button>
+            <button class="primary-button" id="button-disagree">Do not agree</button>
         </div>
         <label>
           <input type="checkbox" id="do-not-show-again"> Do not show again
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function () {
         <h1 class="title">Important information about the nomogram</h1>
         <h3 class="text-about">
         The nomogram is based on data from patients in the control arm of the SENOMAC trial.</br> 
-        The main results of the SENOMAC trial are published here: <a href="https://www.google.com">NEJM 2024</a></br>
-        The present study and nomogram is published here: <a href="https://www.google.com">JAMASurg 2024</a></br>
+        The main results of the SENOMAC trial are published here: <a href="https://www.nejm.org/doi/full/10.1056/NEJMoa2313487" target="_blank">NEJM 2024</a><br>
+        The present study and nomogram is published here: <a href="https://jamanetwork.com/journals/jamasurgery/fullarticle/2824187?utm_campaign=articlePDF&utm_medium=articlePDFlink&utm_source=articlePDF&utm_content=jamasurg.2024.3944" target="_blank">JAMASurg 2024</a></br>
         </h3>
 
         <h3 class="text-about-title">What is a Nomogram?</h3>
         <h3 class="text-about">A nomogram is a graphical tool that helps predict the probability of a clinical event, such as the likelihood of having a high nodal burden 
         (4 or more metastatic axillary lymph nodes) in breast cancer patients. It uses various patient-specific factors to provide a personalized risk assessment. 
         While this is a digital calculator, it is built upon the same principals as the published nomogram Prediction of High Nodal Burden in Patients With Sentinel 
-        Node–Positive Luminal ERBB2-Negative Breast Cancer</br> <a href="https://www.google.com">(Skarping et al., JAMA Surg. 2024 doi:10.1001/jamasurg.2024.3944)</a>.
+        Node–Positive Luminal ERBB2-Negative Breast Cancer</br> <a href="https://jamanetwork.com/journals/jamasurgery/fullarticle/2824187?utm_campaign=articlePDF&utm_medium=articlePDFlink&utm_source=articlePDF&utm_content=jamasurg.2024.3944" target="_blank">(Skarping et al., JAMA Surg. 2024 doi:10.1001/jamasurg.2024.3944)</a>.
         </h3>
 
         <h3 class="text-about-title">Purpose of the Nomogram</h3>
@@ -103,13 +103,13 @@ document.addEventListener("DOMContentLoaded", function () {
         </h3>
     `;
     const contactContent = `
-        <h1>Contact</h1>
-        <h3 class="text-contact">For inquiries, please email us at info@neoactcalculator.com.</h3>
-        <button id="button-clear-agreement">Clear Agreement</button>
+        <h1 class="title">Contact</h1>
+        <h3 class="text-contact">For inquiries, please email us at <strong>info@neoactcalculator.com</strong>.</h3>
+        <button class="primary-button" id="button-clear-agreement">Clear Agreement</button>
     `;
     const calculatorContent = `
         <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥N2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
-        <p>Please enter the following data. All fields are mandatory.</p>
+        <h3 class="text-contact">Please enter the following data. All fields are mandatory.</h3>
         <div class="input-container">
             <div class="input-line">
                 <label for="input1">Input 1:</label>
@@ -128,9 +128,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             <div class="error-container" id="error-container"></div>
 
-            <button id="button-calculate">Calculate</button>
+            <button class="primary-button" id="button-calculate">Calculate</button>
         </div>
-        <div id="result-container"></div>
+        <div class="result-container" id="result-container"></div>
     `;
 
     //Update content
@@ -177,14 +177,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 const input3 = document.getElementById("input3").value;
 
                 if (input1 === "" || input2 === "" || input3 === "") {
-                    errorContainer.innerHTML = `<h5>Please enter all values</h5>`;
+                    errorContainer.innerHTML = `<h3>Please enter all values</h3>`;
                     return;
                 }
           
                 const result = parseFloat(input1) + parseFloat(input2) + parseFloat(input3); //calculation
         
                 const resultContainer = document.getElementById("result-container");
-                resultContainer.innerHTML = `<h2>Your result: The probability of high nodal burden in the ipsilateral axilla is ${result}%. This translates to that ${result} out of 100 patients with the characteristics entered by you will be identified to have high nodal burden (in total four or more metastatic axillary nodes, i.e. sentinel lymph node metastases included) if subjected to a completion axillary lymph node dissection.</h2>`;
+                resultContainer.classList.add("visible");
+                resultContainer.innerHTML = 
+                `<h2 class="text-result-title">Your result</h2>
+                <h3 class="text-result"> 
+                The probability of high nodal burden in the ipsilateral axilla is <strong>${result}%</strong>. This translates to that <strong>${result}</strong> out of 100 patients 
+                with the characteristics entered by you will be identified to have high nodal burden (in total four or more metastatic axillary nodes, 
+                i.e. sentinel lymph node metastases included) if subjected to a completion axillary lymph node dissection.
+                </h3>`;
                 errorContainer.innerHTML = ``;
             });
         }
