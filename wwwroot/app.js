@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Content of each page
     const homeContent = `
-        <h1>Welcome to NeoACT Calculator</h1>
+        <h1>Nomogram for the Prediction of High Nodal Burden (≥N2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Node Macrometastases</h1>
         <h2>Disclaimer</h2>
         <p>Text about disclaimer</p>
         <div class="button-container">
