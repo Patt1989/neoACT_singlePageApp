@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Content of each page
     const nomogramContent = `
-        <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥N2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
+        <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥pN2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
         <div class="disclaimer-container">
             <h2 class="title-disclaimer">Disclaimer</h2>
             <h3 class="text-disclaimer">
@@ -86,29 +86,29 @@ document.addEventListener("DOMContentLoaded", function () {
         <h3 class="text-about-title">Benefits of the Nomogram</h3>
         <h3 class="text-about">
         •	Personalized Risk Assessment: Provides a tailored prediction for each patient.</br>
-        •	Informed Treatment Decisions: Helps doctors decide on systemic treatments conditional on nodal status (≥N2) without additional axillary surgery.</br>
+        •	Informed Treatment Decisions: Helps doctors decide on systemic treatments conditional on nodal status (≥pN2) without additional axillary surgery.</br>
         •	Reduced Morbidity: Minimizes the risk of arm problems associated with CALND.
         </h3>
 
         <h3 class="text-about-title">Result</h3>
         <h3 class="text-about">The result will presented as the probability (%) of high nodal burden in the ipsilateral axilla if subjected to a completion axillary lymph node dissection, 
-        based on the characteristics you have entered. Please note that a high nodal burden (≥N2, four or more metastatic axillary lymph nodes) 
+        based on the characteristics you have entered. Please note that a high nodal burden (≥pN2, four or more metastatic axillary lymph nodes) 
         refers to the total number of metastatic lymph nodes, including sentinel lymph node metastases.</br>
         </h3>
 
         <h3 class="text-about-title">Summary</h3>
-        <h3 class="text-about">This nomogram is a valuable tool for predicting high nodal burden (≥N2) in breast cancer patient with ER+ HER2neu/ERBB2-Negative cN0 T1-T3 tumors and 
+        <h3 class="text-about">This nomogram is a valuable tool for predicting high nodal burden (≥pN2) in breast cancer patient with ER+ HER2neu/ERBB2-Negative cN0 T1-T3 tumors and 
         1 or 2 SLNs macrometastases, aiding in better treatment planning and reducing the need for cALND for nodal staging. However, further external validation 
         is needed to ensure its accuracy and reliability.
         </h3>
     `;
     const contactContent = `
         <h1 class="title">Contact</h1>
-        <h3 class="text-contact">For inquiries, please email us at <strong>info@neoactcalculator.com</strong>.</h3>
+        <h3 class="text-contact">For inquiries, please email us at <strong>nomogram_senomac@meb.ki.se</strong>.</h3>
         <button class="primary-button" id="button-clear-agreement">Clear Agreement</button>
     `;
     const calculatorContent = `
-        <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥N2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
+        <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥pN2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
         <h3 class="text-contact">Please enter the following data. All fields are mandatory.</h3>
         <div class="input-container">
             <div class="input-line">
@@ -132,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
         <div class="result-container" id="result-container"></div>
     `;
+    const doNotAgreeContent = `
+    <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥pN2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
+    <h3 class="text-do-not-agree">You have chosen to not agree to the conditions for using the SENOMAC nomogram and can therefore not continue to the nomogram page.</h3>
+`;
 
     //Update content
     function updateContent(contentHTML) {
@@ -151,8 +155,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 updateContent(calculatorContent); 
             });
 
-            btnDisagree.addEventListener("click", function () {
-                window.location.href = "https://www.google.com";
+            btnDisagree.addEventListener("click", function (e) {
+                e.preventDefault();
+                updateContent(doNotAgreeContent);
             });
         }
 
@@ -198,7 +203,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //Event listeners for each navbar tab
-
     // --- Homepage
     nomogramLink.addEventListener("click", function (e) {
         e.preventDefault();

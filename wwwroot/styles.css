@@ -113,7 +113,12 @@ main {
 
 .text-contact {
   font-weight: 300;
-  margin-bottom: 50px;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.text-do-not-agree {
+  font-weight: 300;
   margin: 0;
   margin-bottom: 20px;
 }
