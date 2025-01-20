@@ -162,6 +162,12 @@ label {
 }
 
 /* Calculator */
+.text-nomogram {
+  font-weight: 300;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -227,6 +233,7 @@ input[type="number"]::-ms-clear {
   .error-container h3 {
     margin: 5px;
     font-weight: 100;
+
   }
 
 .result-container {

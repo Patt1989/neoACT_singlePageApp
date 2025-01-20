@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
     const calculatorContent = `
         <h1 class="title">Nomogram for the Prediction of High Nodal Burden (≥pN2) in Patients With ER+ HER2neu/ERBB2-Negative Breast Cancer and 1-2 Sentinel Lymph Node Macrometastases</h1>
-        <h3 class="text-contact">Please enter the following data. All fields are mandatory.</h3>
+        <h3 class="text-nomogram">Please enter the following data. All fields are mandatory.</h3>
         <div class="input-container">
             <div class="input-line">
                 <label for="input_tumorsize">Tumor size (mm), assessed with histopathology:</label>
