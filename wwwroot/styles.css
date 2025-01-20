@@ -165,21 +165,38 @@ label {
 .input-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin: 0px;
     align-items: center;
   }
-  
-.input-container label {
-    font-size: 16px;
+
+.input-line {
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
   
-.input-container input {
+.input-line label {
+    font-size: 16px;
+    width: 550px;
+    text-align: left;
+  }
+  
+.input-line input {
     padding: 10px;
     font-size: 16px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 228px;
+  }
+
+  .input-line select {
+    padding: 10px;
+    font-size: 16px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
   }
 
 /* ------------ remove up/down arrows */
@@ -199,16 +216,16 @@ input[type="number"]::-ms-clear {
     display: none;  
   }
 
-.input-line {
+.error-container {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    color: red;
     align-items: center;
   }
 
-.error-container {
-    display: flex;
-    justify-content: center;
-    color: red;
+  .error-container h3 {
+    margin: 5px;
   }
 
 .result-container {

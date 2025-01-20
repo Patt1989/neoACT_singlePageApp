@@ -112,23 +112,45 @@ document.addEventListener("DOMContentLoaded", function () {
         <h3 class="text-contact">Please enter the following data. All fields are mandatory.</h3>
         <div class="input-container">
             <div class="input-line">
-                <label for="input1">Input 1:</label>
-                <input type="number" id="input1" placeholder="Enter value 1" />
+                <label for="input_tumorsize">Tumor size (mm), assessed with histopathology:</label>
+                <input type="number" id="input_tumorsize" placeholder="Enter value between 0-140 mm"/>
             </div>
 
             <div class="input-line">
-                <label for="input2">Input 2:</label>
-                <input type="number" id="input2" placeholder="Enter value 2" />
+                <label for="input_sln">Number of excised sentinel  lymph nodes:</label>
+                <input type="number" id="input_sln" placeholder="Enter value between 0-10"/>
             </div>
 
             <div class="input-line">
-                <label for="input3">Input 3:</label>
-                <input type="number" id="input3" placeholder="Enter value 3" />
+                <label for="input_sln_with_macro">Number of sentinel lymph nodes with macrometastases (>2 mm):</label>
+                <select id="input_sln_with_macro">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+
+            <div class="input-line">
+                <label for="input_sln_micro">Presence of sentinel lymph node micrometastases <br> (>0.2 mm but ≤2 mm and/or >200 cells):</label>
+                <select id="input_sln_micro">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <div class="input-line" style="margin-bottom: 20px;">
+                <label for="input_extracap_extension">Presence of extracapsular extension	in sentinel lymph node metastases:</label>
+                <select id="input_extracap_extension">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
             </div>
 
             <div class="error-container" id="error-container"></div>
 
-            <button class="primary-button" id="button-calculate">Calculate</button>
+            <button class="primary-button" id="button-calculate" style="align-self: center; margin-top: 20px;">Calculate</button>
         </div>
         <div class="result-container" id="result-container"></div>
     `;
@@ -177,16 +199,36 @@ document.addEventListener("DOMContentLoaded", function () {
         
         if (btnCalculate) {
             btnCalculate.addEventListener("click", function () {
-                const input1 = document.getElementById("input1").value;
-                const input2 = document.getElementById("input2").value;
-                const input3 = document.getElementById("input3").value;
+                const input_tumorsize = document.getElementById("input_tumorsize").value;
+                const input_sln = document.getElementById("input_sln").value;
+                const input_sln_with_macro = document.getElementById("input_sln_with_macro").value;
+                const input_sln_micro = document.getElementById("input_sln_micro").value;
+                const input_extracap_extension = document.getElementById("input_extracap_extension").value;
 
-                if (input1 === "" || input2 === "" || input3 === "") {
-                    errorContainer.innerHTML = `<h3>Please enter all values</h3>`;
+                let errorMessages = [];
+                if (input_tumorsize < 0 || input_tumorsize > 140) {
+                    errorMessages.push(`Please select a tumorsize between 0-140mm`);     
+                }
+                if (input_sln < 0 || input_sln > 10) {
+                    errorMessages.push(`Please select a number of excised sentinel lymph nodes between 0-10`);     
+                }
+                if (input_tumorsize === "" || input_sln === "" || input_sln_with_macro === "" || input_sln_micro == "" || input_extracap_extension == "") {
+                    errorMessages.push(`Please enter all values`);
+                }
+
+                if (errorMessages.length > 0) {
+                    errorContainer.innerHTML = ''; 
+
+                    errorMessages.forEach(message => {
+                        const errorMessageDiv = document.createElement('h3'); // Create a <div> element
+                        errorMessageDiv.textContent = message;                // Set the text content
+                        errorContainer.appendChild(errorMessageDiv);           // Append to the container
+                    });
+
                     return;
                 }
           
-                const result = parseFloat(input1) + parseFloat(input2) + parseFloat(input3); //calculation
+                const result = parseFloat(input_tumorsize) + parseFloat(input_sln) + parseFloat(input_sln_with_macro); //calculation
         
                 const resultContainer = document.getElementById("result-container");
                 resultContainer.classList.add("visible");
